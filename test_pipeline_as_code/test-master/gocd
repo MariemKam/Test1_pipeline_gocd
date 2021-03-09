@@ -1,0 +1,4 @@
+cd /godata/pipelines/New-Pipline
+git add -- pipeline.gocd.yaml
+git commit -m "My PaC configs"
+git push

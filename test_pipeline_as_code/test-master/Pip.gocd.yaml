@@ -1,0 +1,32 @@
+format_version: 10
+pipelines:
+  Pip:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-91debc7:
+        git: https://gitlab.com/ayoubch1/test.git
+        username: ayoubch1
+        shallow_clone: false
+        auto_update: true
+        branch: master
+        encrypted_password: AES:jmVkZOIkASKn1egKc9Oovw==:nB0kD37atrrHPkBplKbHlg==
+    stages:
+    - sts:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          joj:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - clean
+                command: mvn
+                run_if: passed
